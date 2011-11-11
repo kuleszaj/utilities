@@ -25,8 +25,7 @@ cat >/etc/puppet/puppet.conf <<EOF
 EOF
 
 export PATH="$PATH:/var/lib/gems/1.8/bin"
-puppet agent --no-daemonize --onetime --no-splay --verbose || {
-  echo "On the Puppet master, run: puppet cert -s $(facter fqdn)" >&2
-  read -p "Press <ENTER> when that's done. " ENTER
-  puppet agent --no-daemonize --onetime --no-splay --verbose
+puppet agent --no-daemonize --onetime --no-splay --verbose
+echo "On the Puppet master, run: puppet cert -s $(facter fqdn)" >&2
+echo "When that's done, run: puppet agent --no-daemonize --onetime --no-splay --verbose"
 }
