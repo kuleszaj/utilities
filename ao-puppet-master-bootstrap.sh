@@ -24,7 +24,5 @@ cat >/etc/puppet/puppet.conf <<EOF
   environment = "production"
 EOF
 
-export PATH="$PATH:/var/lib/gems/1.8/bin"
-puppet agent --no-daemonize --onetime --no-splay --verbose
-echo "On the Puppet master, run: puppet cert -s $(facter fqdn)" >&2
-echo "When that's done, run: puppet agent --no-daemonize --onetime --no-splay --verbose"
+echo "You should ensure that the hostname is properly set, in both /etc/hosts and in your network config."
+echo "After this, run: puppet master --mkuser"
