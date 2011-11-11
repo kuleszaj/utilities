@@ -6,7 +6,7 @@ yum install -y ruby rubygems ntpdate ||
 false
 
 # Run ntpdate to ensure the system date is correct
-ntpdate pool.ntpd.org
+ntpdate pool.ntp.org
 
 # Update rubygems, and pull down facter and then puppet
 gem update --system
