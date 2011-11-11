@@ -1,7 +1,7 @@
 set -ex
 
 apt-get install ruby rubygems ||
-yum install ruby rubygems ||
+yum install -y ruby rubygems ||
 pkgin install ruby rubygems ||
 false
 
