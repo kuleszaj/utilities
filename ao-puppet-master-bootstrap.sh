@@ -2,7 +2,7 @@ set -ex
 
 # Get ruby, rubygems, and npdtae
 apt-get install ruby rubygems ntpdate ||
-yum install -y ruby rubygems nptdate ||
+yum install -y ruby rubygems ntpdate ||
 false
 
 # Run ntpdate to ensure the system date is correct
