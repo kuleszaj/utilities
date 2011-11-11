@@ -1,10 +1,14 @@
 set -ex
 
-apt-get install ruby rubygems ||
-yum install -y ruby rubygems ||
-pkgin install ruby rubygems ||
+# Get ruby, rubygems, and npdtae
+apt-get install ruby rubygems ntpdate ||
+yum install -y ruby rubygems ntpdate ||
 false
 
+# Run ntpdate to ensure the system date is correct
+ntpdate pool.ntp.org
+
+# Update rubygems, and pull down facter and then puppet
 gem update --system
 gem install facter
 gem install puppet
@@ -25,6 +29,7 @@ cat >/etc/puppet/puppet.conf <<EOF
 EOF
 
 export PATH="$PATH:/var/lib/gems/1.8/bin"
-puppet agent --no-daemonize --onetime --no-splay --verbose
-echo "On the Puppet master, run: puppet cert -s $(facter fqdn)" >&2
-echo "When that's done, run: puppet agent --no-daemonize --onetime --no-splay --verbose"
+echo "Ensure that puppet-master-centos.atomicobject.local is accessible, then:"
+echo "On this machine run: puppet agent --no-daemonize --onetime --no-splay --verbose"
+echo "On the puppet master, run: puppet cert -s $(facter fqdn)" >&2
+echo "When that's done, on this machine run: puppet agent --no-daemonize --onetime --no-splay --verbose"
