@@ -1,5 +1,3 @@
-set -ex
-
 # Get ruby, rubygems, and npdtae
 apt-get install ruby rubygems ntpdate ||
 yum install -y ruby rubygems ntpdate ||
