@@ -13,9 +13,7 @@ ntpdate pool.ntp.org
 # Install RVM
 bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
 
-bash <<END
-
-rvm install 1.8.7
+/usr/local/rvm/bin/rvm install 1.8.7
 
 # Update rubygems, and pull down facter and then puppet
 gem update --system
@@ -56,4 +54,3 @@ echo "You should ensure that your intended hostname is properly set, in both /et
 echo "Currently, the hostname is: $(facter fqdn)"
 echo "After this, run: puppet master --mkuser"
 
-END
