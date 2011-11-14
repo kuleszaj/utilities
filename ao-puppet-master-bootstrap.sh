@@ -14,6 +14,7 @@ ntpdate pool.ntp.org
 bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
 
 /usr/local/rvm/bin/rvm install 1.8.7
+/usr/local/rvm/bin/rvm use 1.8.7 --default
 
 # Update rubygems, and pull down facter and then puppet
 gem update --system
