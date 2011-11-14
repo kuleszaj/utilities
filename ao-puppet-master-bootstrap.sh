@@ -5,10 +5,10 @@ rpm -K rpmforge-release-0.5.2-2.el5.rf.*.rpm
 rpm -i rpmforge-release-0.5.2-2.el5.rf.*.rpm
 
 # Get ruby, rubygems, and npdtae
-yum install -y git subversion readline readline-devel zlib zlib-devel openssl openssl-devel autoconf  ntp
+yum install -y glibc gcc-c++ patch make bzip2 autoconf automake libtool bison git subversion readline readline-devel zlib zlib-devel openssl openssl-devel libyaml-devel libffi-devel  ntp
 
 # Run ntpdate to ensure the system date is correct
-#ntpdate pool.ntp.org
+ntpdate pool.ntp.org
 
 # Install RVM
 bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
