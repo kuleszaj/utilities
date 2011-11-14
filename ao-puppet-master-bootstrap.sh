@@ -1,5 +1,11 @@
 wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+rpm --import http://ftp.osuosl.org/pub/fedora-epel/RPM-GPG-KEY-EPEL-5
+rpm -K epel-release-5-4.noarch.rpm
 rpm -i epel-release-5-4.noarch.rpm
+wget http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.x86_64.rpm
+rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
+rpm -K rpmforge-release-0.5.2-2.el5.rf.*.rpm
+rpm -i rpmforge-release-0.5.2-2.el5.rf.*.rpm
 
 # Get ruby, rubygems, and npdtae
 apt-get install ruby rubygems ntpdate ||
