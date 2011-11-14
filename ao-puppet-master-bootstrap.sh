@@ -1,3 +1,6 @@
+wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+rpm -i epel-release-5-4.noarch.rpm
+
 # Get ruby, rubygems, and npdtae
 apt-get install ruby rubygems ntpdate ||
 yum install -y ruby rubygems ntpdate ||

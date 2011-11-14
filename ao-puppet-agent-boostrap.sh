@@ -27,7 +27,7 @@ cat >/etc/puppet/puppet.conf <<EOF
 EOF
 
 export PATH="$PATH:/var/lib/gems/1.8/bin"
-echo "Ensure that puppet-master-centos.atomicobject.local is accessible, then:"
+echo "Ensure that puppet-master-centos.atomicobject.localnet is accessible, then:"
 echo "On this machine run: puppet agent --no-daemonize --onetime --no-splay --verbose"
 echo "On the puppet master, run: puppet cert -s $(facter fqdn)" >&2
 echo "When that's done, on this machine run: puppet agent --no-daemonize --onetime --no-splay --verbose"
