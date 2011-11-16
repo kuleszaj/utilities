@@ -1,4 +1,4 @@
-cat >/git/home/repositories/puppet-smetoolkit.git/hooks/post-receive <<EOF
+cat >/home/git/repositories/puppet-smetoolkit.git/hooks/post-receive <<EOF
 #!/usr/bin/env ruby
  
 # Set this to where you want to keep your environments
@@ -73,8 +73,8 @@ end
 end
 EOF
 
-chmod +x /git/home/repositories/puppet-smetoolkit.git/hooks/post-receive
-chown git:git /git/home/repositories/puppet-smetoolkit.git/hooks/post-receive
+chmod +x /home/git/repositories/puppet-smetoolkit.git/hooks/post-receive
+chown git:git /home/git/repositories/puppet-smetoolkit.git/hooks/post-receive
 
 echo "You should now commit all of the necessary files to the puppet-smetoolkit repo, and then run:"
 echo "Run: bash < <(curl https://raw.github.com/kuleszaj/utilities/master/ao-puppet-master-bootstrap-part3.sh)"
