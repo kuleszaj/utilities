@@ -56,7 +56,8 @@ EOF
 iptables -I INPUT 1 -p tcp --dport 8140 -j ACCEPT
 
 # Save firewall configure
-OS=`facter osfamily`
+OS=`source /etc/profile.d/rvm.sh && rvm 1.8.7 && facter osfamily`
+FQDN=`source /etc/profile.d/rvm.sh && rvm 1.8.7 && facter fqdn`
 OS=`echo $OS | tr [:upper:] [:lower:]`
 case $OS in
   "redhat")
@@ -68,7 +69,7 @@ case $OS in
     iptables-save > /etc/iptables.rules
     ;;
   *)
-    echo "Uknown OS"
+    echo "Unknown OS"
     ;;
 esac
 
@@ -82,7 +83,7 @@ su - git -c 'gl-setup -q ~/pps.pub'
 
 echo -e "git  ALL=(root)  NOPASSWD: /bin/mv -f /home/git/etc/puppet/environments/* /etc/puppet/environments\ngit ALL=(root)  NOPASSWD: /bin/chown -R puppet\\:puppet /etc/puppet/environments\ngit ALL=(root)  NOPASSWD: /bin/rm -rf /etc/puppet/environments*" >> /etc/sudoers
 echo "You now must clone the gitolite administration repository, and create the new repository for the puppet code."
-echo "Run: git clone git@$(facter fqdn):gitolite-admin"
+echo "Run: git clone git@$FQDN:gitolite-admin"
 echo "Create a new repo named 'puppet-smetoolkit' and then..."
 echo "Run: bash < <(curl https://raw.github.com/kuleszaj/utilities/master/ao-puppet-master-bootstrap-part2.sh)"
 
