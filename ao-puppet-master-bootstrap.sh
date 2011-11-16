@@ -74,6 +74,7 @@ case $OS in
 esac
 
 useradd -m -s /bin/bash git
+useradd -m -s /bin/bash puppet
 su - git -c 'git clone git://github.com/sitaramc/gitolite'
 su - git -c '~/gitolite/src/gl-system-install'
 cat >/home/git/pps.pub <<EOF
@@ -81,7 +82,7 @@ ssh-dss AAAAB3NzaC1kc3MAAACBAMHRmXb9OoWuUbVNh4BJ2tUhVcZXRXfKGcnICgSXxm2KZssUGI5O
 EOF
 su - git -c 'gl-setup -q ~/pps.pub'
 
-echo -e "git  ALL=(root)  NOPASSWD: /bin/mv -f /home/git/etc/puppet/environments/* /etc/puppet/environments\ngit ALL=(root)  NOPASSWD: /bin/chown -R puppet\\:puppet /etc/puppet/environments\ngit ALL=(root)  NOPASSWD: /bin/rm -rf /etc/puppet/environments*" >> /etc/sudoers
+echo -e "git  ALL=(root)  NOPASSWD: /bin/mv -f /home/git/etc/puppet/environments/* /etc/puppet/environments\ngit ALL=(root)  NOPASSWD: /bin/chown -R puppet\\:puppet /etc/puppet/environments\ngit ALL=(root)  NOPASSWD: /bin/rm -rf /etc/puppet/environments*\nDefaults  !requiretty" >> /etc/sudoers
 echo "You now must clone the gitolite administration repository, and create the new repository for the puppet code."
 echo "Run: git clone git@$FQDN:gitolite-admin"
 echo "Create a new repo named 'puppet-smetoolkit' and then..."
