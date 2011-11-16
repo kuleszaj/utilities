@@ -23,14 +23,31 @@ gem update --system
 gem install facter
 gem install puppet
 
-mkdir -p /etc/puppet /var/lib /var/log /var/run
+mkdir -p /etc/puppet/environments /var/lib /var/log /var/run
 cat >/etc/puppet/puppet.conf <<EOF
 [main]
   logdir = /var/log/puppet
   rundir = /var/run/puppet
-  ssldir = \$vardir/ssl
+  ssldir = $vardir/ssl
   vardir = /var/lib/puppet
   pluginsync = true
+[agent]
+  report = true
+  show_diff = true
+  pluginsync = true
+  environment = mst
+[prd]
+  manifest = /etc/puppet/environments/prd/manifests/site.pp
+  modulepath = /etc/puppet/environments/prd/modules
+[uat]
+  manifest = /etc/puppet/environments/uat/manifests/site.pp
+  modulepath = /etc/puppet/environments/uat/modules
+[dev]
+  manifest = /etc/puppet/environments/dev/manifests/site.pp
+  modulepath = /etc/puppet/environments/dev/modules
+[mst]
+  manifest = /etc/puppet/environments/mst/manifests/site.pp
+  modulepath = /etc/puppet/environments/mst/modules
 EOF
 
 # Add firewall rule to allow puppet agent connections
@@ -144,6 +161,11 @@ EOF
 
 chmod +x /git/home/repositories/$(reponame).git/hooks/post-receive
 chown git:git /git/home/repositories/$(reponame).git/hooks/post-receive
+
+read -p "Add manifests to the new $(reponame), commit, push, and then (ENTER):"
+
+puppet master --mkusers
+#puppet agent
 
 echo "You should ensure that your intended hostname is properly set, in both /etc/hosts and in your network config."
 echo "Currently, the hostname is: $(facter fqdn)"
