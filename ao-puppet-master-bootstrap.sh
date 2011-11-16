@@ -74,9 +74,9 @@ useradd -m -s /bin/bash git
 su - git -c 'git clone git://github.com/sitaramc/gitolite'
 su - git -c '~/gitolite/src/gl-system-install'
 cat >/home/git/pps.pub <<EOF
-sh-dss AAAAB3NzaC1kc3MAAACBAMHRmXb9OoWuUbVNh4BJ2tUhVcZXRXfKGcnICgSXxm2KZssUGI5OWKMQlIOpNTTJtMa7wD7KjVndlFYTJonFt205VwJI9c4ybmNLHKkCpDmnRdbCOPHIFs7fai/9hQDv5etZ8V3BoGREieGyZaUGAJUuge3uU5jhV/wb90btumHxAAAAFQCGGHtR1NzGPjyaCmynfZaaQdRFFwAAAIAtg3HMybg3rxhsQv/fxi++T17zIAJ1zVwY62ZVGEBoM73+MHQt9aZxQTgEomyaUsFCvSHl+U6RW9SWa5vD/jz1XobgR5Kawe+e3z4FLu2dJolZpZ52B1+gbA10NgBdLKP/joSo3elubVZUqOmxmRpTlY+IMogQwU3wmKTaKV0JCAAAAIByr29YkxN8RW8zBy28A+7NOf64LLkjIMhk+6m5HlYvypsg/WHDXQ9dgJVG3205wOBxAXjnFKASnw6V0EQEsgS/nXGgtNlV/gGrAwEr5+uvicUkZ3DNFymBeqDkPC6MIwsc2ap4mbkCWouv8SG2xbsGQwqCeOvVPK5zK0/zu+kTNw==
+ssh-dss AAAAB3NzaC1kc3MAAACBAMHRmXb9OoWuUbVNh4BJ2tUhVcZXRXfKGcnICgSXxm2KZssUGI5OWKMQlIOpNTTJtMa7wD7KjVndlFYTJonFt205VwJI9c4ybmNLHKkCpDmnRdbCOPHIFs7fai/9hQDv5etZ8V3BoGREieGyZaUGAJUuge3uU5jhV/wb90btumHxAAAAFQCGGHtR1NzGPjyaCmynfZaaQdRFFwAAAIAtg3HMybg3rxhsQv/fxi++T17zIAJ1zVwY62ZVGEBoM73+MHQt9aZxQTgEomyaUsFCvSHl+U6RW9SWa5vD/jz1XobgR5Kawe+e3z4FLu2dJolZpZ52B1+gbA10NgBdLKP/joSo3elubVZUqOmxmRpTlY+IMogQwU3wmKTaKV0JCAAAAIByr29YkxN8RW8zBy28A+7NOf64LLkjIMhk+6m5HlYvypsg/WHDXQ9dgJVG3205wOBxAXjnFKASnw6V0EQEsgS/nXGgtNlV/gGrAwEr5+uvicUkZ3DNFymBeqDkPC6MIwsc2ap4mbkCWouv8SG2xbsGQwqCeOvVPK5zK0/zu+kTNw==
 EOF
-su - git -c 'gl-setup ~/pps.pub'
+su - git -c 'gl-setup -q ~/pps.pub'
 
 echo "You now must clone the gitolite administration repository, and create the new repository for the puppet code."
 echo "Run: git clone git@$(facter fqdn):gitolite-admin"
