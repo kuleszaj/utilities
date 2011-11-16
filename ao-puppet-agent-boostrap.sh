@@ -20,8 +20,8 @@ rvm use 1.8.7 --default
 
 # Update rubygems, and pull down facter and then puppet
 gem update --system
-gem install facter
-gem install puppet
+gem install facter --no-ri --no-rdoc
+gem install puppet --no-ri --no-rdoc
 
 mkdir -p /etc/puppet /var/lib /var/log /var/run
 cat >/etc/puppet/puppet.conf <<EOF
