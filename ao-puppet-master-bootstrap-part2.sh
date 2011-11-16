@@ -1,3 +1,4 @@
+mkdir /home/git/etc/puppet/environments
 cat >/home/git/repositories/puppet-smetoolkit.git/hooks/post-receive <<EOF
 #!/usr/bin/env ruby
  
@@ -74,7 +75,7 @@ end
 EOF
 
 chmod +x /home/git/repositories/puppet-smetoolkit.git/hooks/post-receive
-chown git:git /home/git/repositories/puppet-smetoolkit.git/hooks/post-receive
+chown -R git:git /home/git/
 
 echo "You should now commit all of the necessary files to the puppet-smetoolkit repo, and then run:"
 echo "Run: bash < <(curl https://raw.github.com/kuleszaj/utilities/master/ao-puppet-master-bootstrap-part3.sh)"
