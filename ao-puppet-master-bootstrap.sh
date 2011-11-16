@@ -23,7 +23,7 @@ gem update --system
 gem install facter --no-ri --no-rdoc
 gem install puppet --no-ri --no-rdoc
 
-source /etc/profile.d/rvm.sh
+FQDN=`source /etc/profile.d/rvm.sh && rvm 1.8.7 && facter fqdn`
 
 mkdir -p /etc/puppet/environments /var/lib /var/log /var/run
 cat >/etc/puppet/puppet.conf <<EOF
@@ -33,11 +33,13 @@ cat >/etc/puppet/puppet.conf <<EOF
   ssldir = $vardir/ssl
   vardir = /var/lib/puppet
   pluginsync = true
+  environment = mst
 [agent]
   report = true
   show_diff = true
   pluginsync = true
   environment = mst
+  server = $FQDN
 [prd]
   manifest = /etc/puppet/environments/prd/manifests/site.pp
   modulepath = /etc/puppet/environments/prd/modules
@@ -57,7 +59,6 @@ iptables -I INPUT 1 -p tcp --dport 8140 -j ACCEPT
 
 # Save firewall configure
 OS=`source /etc/profile.d/rvm.sh && rvm 1.8.7 && facter osfamily`
-FQDN=`source /etc/profile.d/rvm.sh && rvm 1.8.7 && facter fqdn`
 OS=`echo $OS | tr [:upper:] [:lower:]`
 case $OS in
   "redhat")
