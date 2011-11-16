@@ -1,4 +1,4 @@
-mkdir /home/git/etc/puppet/environments
+mkdir -p /home/git/etc/puppet/environments
 cat >/home/git/repositories/puppet-smetoolkit.git/hooks/post-receive <<EOF
 #!/usr/bin/env ruby
  
