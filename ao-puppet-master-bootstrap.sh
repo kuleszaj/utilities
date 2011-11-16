@@ -23,6 +23,8 @@ gem update --system
 gem install facter --no-ri --no-rdoc
 gem install puppet --no-ri --no-rdoc
 
+source /etc/profile.d/rvm.sh
+
 mkdir -p /etc/puppet/environments /var/lib /var/log /var/run
 cat >/etc/puppet/puppet.conf <<EOF
 [main]
