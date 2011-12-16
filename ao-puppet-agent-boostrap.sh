@@ -10,6 +10,8 @@ yum install -y glibc gcc-c++ patch make bzip2 autoconf automake libtool bison gi
 # Run ntpdate to ensure the system date is correct
 ntpdate pool.ntp.org
 
+
+echo "insecure" > ~/.curlrc
 # Install RVM
 bash < <(curl -k -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
 
