@@ -11,7 +11,7 @@ yum install -y glibc gcc-c++ patch make bzip2 autoconf automake libtool bison gi
 ntpdate pool.ntp.org
 
 # Install RVM
-bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+bash < <(curl -k -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
 
 source /etc/profile.d/rvm.sh
 
