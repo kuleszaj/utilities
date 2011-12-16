@@ -39,7 +39,8 @@ cat >/etc/puppet/puppet.conf <<EOF
 EOF
 
 export PATH="$PATH:/var/lib/gems/1.8/bin"
-echo "Ensure that 'ashnazg.sme.loc' is accessible, then:"
-echo "On this machine run: puppet agent --no-daemonize --onetime --no-splay --verbose --waitforcert 120"
+puppet agent --no-daemonize --onetime --no-splay --verbose --waitforcert 120
 echo "On the puppet master, run: puppet cert -s $(facter fqdn)" >&2
-echo "When that's done, on this machine run: puppet agent"
+echo "When done, press <ENTER>"
+read
+puppet agent
