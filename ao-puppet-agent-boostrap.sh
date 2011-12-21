@@ -21,8 +21,8 @@ rvmsudo rvm install 1.8.7
 
 # Update rubygems, and pull down facter and then puppet
 rvmsudo gem update --system
-gem install facter --no-ri --no-rdoc
-gem install puppet --no-ri --no-rdoc
+rvmsudo gem install facter --no-ri --no-rdoc
+rvmsudo gem install puppet --no-ri --no-rdoc
 
 sudo mkdir -p /etc/puppet /var/lib /var/log /var/run
 sudo cat >/etc/puppet/puppet.conf <<EOF
@@ -44,4 +44,4 @@ echo "On the puppet master, run: puppet cert -s $(facter fqdn)" >&2
 echo "When done, press <ENTER>"
 sudo puppet agent --no-daemonize --onetime --no-splay --verbose --waitforcert 120
 read
-puppet agent
+sudo puppet agent
