@@ -18,10 +18,9 @@ sudo bash -s stable < <(curl -k -s https://raw.github.com/wayneeseguin/rvm/maste
 source /etc/profile.d/rvm.sh
 
 rvmsudo rvm install 1.8.7
-rvmsudo rvm use 1.8.7 --default
 
 # Update rubygems, and pull down facter and then puppet
-gem update --system
+rvmsudo gem update --system
 gem install facter --no-ri --no-rdoc
 gem install puppet --no-ri --no-rdoc
 
