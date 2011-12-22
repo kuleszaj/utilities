@@ -19,6 +19,8 @@ source /etc/profile.d/rvm.sh
 
 rvmsudo rvm install 1.8.7
 
+sudo su - -c 'rvm 1.8.7 --default'
+
 source /etc/profile.d/rvm.sh
 rvm 1.8.7 --default
 
