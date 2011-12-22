@@ -28,7 +28,7 @@ rvmsudo gem install facter --no-ri --no-rdoc
 rvmsudo gem install puppet --no-ri --no-rdoc
 
 sudo mkdir -p /etc/puppet /var/lib /var/log /var/run
-sudo cat >/etc/puppet/puppet.conf <<EOF
+cat >~/puppet.conf <<EOF
 [main]
   logdir = /var/log/puppet
   rundir = /var/run/puppet
@@ -41,6 +41,7 @@ sudo cat >/etc/puppet/puppet.conf <<EOF
 
   environment = "dev"
 EOF
+sudo mv ~/puppet.conf /etc/puppet/puppet.conf
 
 export PATH="$PATH:/var/lib/gems/1.8/bin"
 echo "On the puppet master, run: puppet cert -s $(facter fqdn)" >&2
