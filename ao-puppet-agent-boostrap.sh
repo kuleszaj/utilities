@@ -43,7 +43,6 @@ cat >~/puppet.conf <<EOF
 EOF
 sudo mv ~/puppet.conf /etc/puppet/puppet.conf
 
-export PATH="$PATH:/var/lib/gems/1.8/bin"
 echo "On the puppet master, run: puppet cert -s $(facter fqdn)" >&2
 echo "When done, press <ENTER>"
 sudo puppet agent --no-daemonize --onetime --no-splay --verbose --waitforcert 120
