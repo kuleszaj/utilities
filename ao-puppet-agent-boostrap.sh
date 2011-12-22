@@ -45,6 +45,6 @@ sudo mv ~/puppet.conf /etc/puppet/puppet.conf
 
 echo "On the puppet master, run: puppet cert -s $(facter fqdn)" >&2
 echo "When done, press <ENTER>"
-sudo puppet agent --no-daemonize --onetime --no-splay --verbose --waitforcert 120
+rvmsudo puppet agent --no-daemonize --onetime --no-splay --verbose --waitforcert 120
 read
-sudo puppet agent
+rvmsudo puppet agent
