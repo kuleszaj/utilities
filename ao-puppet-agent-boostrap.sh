@@ -19,6 +19,9 @@ source /etc/profile.d/rvm.sh
 
 rvmsudo rvm install 1.8.7
 
+source /etc/profile.d/rvm.sh
+rvm 1.8.7 --default
+
 # Update rubygems, and pull down facter and then puppet
 rvmsudo gem update --system
 rvmsudo gem install facter --no-ri --no-rdoc
