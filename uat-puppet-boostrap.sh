@@ -30,6 +30,8 @@ rvmsudo gem install facter --no-ri --no-rdoc
 rvmsudo gem install puppet --no-ri --no-rdoc
 
 sudo mkdir -p /etc/puppet /var/lib /var/log /var/run
+echo "nameserver 10.0.132.5" > ~/resolv.conf
+sudo mv ~/resolv.conf /etc/resolv.conf
 cat >~/puppet.conf <<EOF
 [main]
   logdir = /var/log/puppet
