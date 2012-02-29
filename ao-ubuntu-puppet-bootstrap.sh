@@ -44,4 +44,4 @@ sudo mkdir -p /var/lib/puppet/ssl/certs/
 sudo scp atomic@isildur.atomicobject.localnet:/var/lib/puppet/ssl/certs/ca.pem /var/lib/puppet/ssl/certs/ca.pem
 sudo "ln -s /var/lib/puppet/ssl/certs/ca.pem $(openssl version -d|cut -d\" -f2)/certs/$(openssl x509 -hash -noout -in /var/lib/puppet/ssl/certs/ca.pem).0"
 
-rvmsudo puppet agent --no-daemonize --onetime --no-splay --verbose --waitforcert 120
+rvmsudo rvm 1.9.2-p290 do puppet agent --no-daemonize --onetime --no-splay --verbose --waitforcert 120
